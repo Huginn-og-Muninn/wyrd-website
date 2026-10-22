@@ -59,7 +59,22 @@ a:focus-visible { outline: 2px solid var(--oak); outline-offset: 3px; }
 
 .nav .wrap { display: flex; align-items: center; gap: 24px; min-height: 60px; }
 
-.wordmark { font: 400 25px/1 var(--serif); margin-right: auto; letter-spacing: .01em; }
+.brand { display: flex; align-items: center; gap: 14px; margin-right: auto; min-width: 0; padding: 10px 0; }
+
+.wordmark { font: 400 25px/1 var(--serif); letter-spacing: .01em; }
+
+.def {
+  display: flex;
+  flex-direction: column;
+  padding-left: 14px;
+  border-left: 1px solid var(--rule);
+  font: 13px/1.35 var(--serif);
+  color: var(--oak-soft);
+}
+
+.def-say { font-size: 12.5px; }
+
+.hold { color: var(--oak); }
 
 .nav-link { font-size: 15px; text-decoration: none; white-space: nowrap; }
 
@@ -106,18 +121,6 @@ h2 { font: 400 clamp(26px, 4.2vw, 33px)/1.18 var(--serif); margin: 0 0 24px; }
 /* ---- Hero ---- */
 
 .hero { padding: 34px 0 44px; }
-
-.entry {
-  max-width: 54ch;
-  margin: 30px 0 0;
-  padding-top: 14px;
-  border-top: 1px solid var(--rule);
-  font-family: var(--serif);
-  font-size: 15px;
-  color: var(--oak-soft);
-}
-
-.entry b, .entry .hold { color: var(--oak); }
 
 .eyebrow {
   margin: 0 0 12px;
@@ -234,6 +237,10 @@ h1 {
 
 @media (max-width: 599px) {
   .nav-link { display: none; }
+  .def-long { display: none; }
+  .def-mean .hold { display: none; }
+  .brand { gap: 10px; }
+  .def { padding-left: 10px; }
   .band { padding: 44px 0; }
   .brief { padding: 4px 16px; }
   .brief dt { flex: 0 0 74px; }
@@ -244,7 +251,10 @@ h1 {
 
 <header class="nav">
   <div class="wrap">
-    <span class="wordmark">wyrd</span>
+    <div class="brand">
+      <span class="wordmark">wyrd</span>
+      <span class="def"><span class="def-say">/wɪərd/ <i>noun</i></span><span class="def-mean">Old English for fate<span class="def-long">, the threads of everything woven together</span>. <span class="hold">We help you hold yours.</span></span></span>
+    </div>
     <a class="nav-link" href="#what">What it does</a>
     <a class="nav-link" href="#work">Work with us</a>
     <a class="btn btn-sm" href="mailto:info@getwyrd.ai?subject=Booking%20a%20call">Book a call</a>
@@ -262,7 +272,6 @@ h1 {
         <a class="btn" href="mailto:info@getwyrd.ai?subject=Booking%20a%20call">Book a call</a>
         <a class="btn btn-ghost" href="#what">See what it does</a>
       </p>
-      <p class="entry"><b>wyrd</b> <i>(n.)</i> /wɪərd/ — Old English for fate, the threads of everything woven together. <span class="hold">We help you hold yours.</span></p>
     </div>
   </section>
 
