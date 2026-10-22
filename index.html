@@ -12,7 +12,8 @@
 <meta property="og:image" content="https://getwyrd.ai/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='none'%20stroke-width='2.6'%20stroke-linecap='round'%3E%3Cpath%20d='M3%206%20C14%206%2014%2016%2029%2016'%20stroke='%23c2643b'/%3E%3Cpath%20d='M3%2016%20C14%2016%2018%2016%2029%2016'%20stroke='%233d5a98'/%3E%3Cpath%20d='M3%2026%20C14%2026%2014%2016%2029%2016'%20stroke='%236b8f71'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap">
 <style>
 :root {
   color-scheme: light;
@@ -23,6 +24,7 @@
   --gold-mid: #c2643b;
   --gold-deep: #c2643b;
   --card: #ffffff;
+  --clay-text: #a84f2a;
   --rule: #e2ddd2;
   --card-rule: #ebe6dc;
   --serif: "Newsreader", Georgia, serif;
@@ -55,29 +57,29 @@ a:focus-visible { outline: 2px solid var(--oak); outline-offset: 3px; }
   border-bottom: 1px solid var(--rule);
 }
 
-.nav .wrap { display: flex; align-items: flex-start; gap: 24px; min-height: 60px; }
+.nav .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; padding-top: 14px; padding-bottom: 14px; }
 
-.brand { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-right: auto; min-width: 0; padding: 14px 0 12px; }
+.primary { display: flex; align-items: center; gap: 24px; }
 
-.wordmark { font: 400 25px/1 var(--serif); letter-spacing: .01em; }
+.wordmark { margin-right: auto; font: 400 25px/1 var(--serif); letter-spacing: .01em; }
 
 .def {
   display: flex;
   flex-direction: column;
-  max-width: 64ch;
+  flex: 1 0 100%;
+  margin: 6px 0 0;
   font: 13px/1.35 var(--serif);
   color: var(--oak-soft);
 }
 
 .def-say { font-size: 12.5px; }
 
-.hold { color: var(--oak); }
+.def-mean { text-wrap: balance; }
+
+.hold { display: block; margin-top: 2px; }
 
 .nav-link { font-size: 15px; text-decoration: none; white-space: nowrap; }
 
-.nav .wrap > .nav-link { margin-top: 16px; }
-
-.nav .wrap > .btn { margin-top: 9px; }
 
 .nav-link:hover { text-decoration: underline; }
 
@@ -234,8 +236,12 @@ h1 {
 
 /* ---- Phone ---- */
 
-@media (max-width: 599px) {
+@media (max-width: 759px) {
   .nav-link { display: none; }
+}
+
+@media (max-width: 599px) {
+  .btn-sm { padding: 12px 18px; }
   .band { padding: 44px 0; }
   .brief { padding: 4px 16px; }
   .brief dt { flex: 0 0 74px; }
@@ -246,25 +252,30 @@ h1 {
 body { font-size: 16.5px; }
 .wordmark { font-size: 28px; font-weight: 500; }
 .def { font-family: var(--serif); font-size: 14px; }
-.hold { color: var(--gold-deep); font-style: italic; }
+.hold { color: var(--clay-text); font-style: italic; }
 h1 { font-weight: 400; font-size: clamp(34px, 7.4vw, 62px); letter-spacing: -.015em; }
 h1, h2, .items h3, .card h3 { font-weight: 400; }
-.eyebrow { color: var(--gold-deep); font-weight: 500; }
+.eyebrow { color: var(--clay-text); font-weight: 500; }
+h1, .eyebrow { text-wrap: balance; }
+.cta-note { margin: 14px 0 0; font-size: 15px; color: var(--oak-soft); }
+.cta-note a { color: var(--oak); }
+.work-cta { margin: 22px 0 0; }
 .btn { border-radius: 8px; font-weight: 500; }
 .btn:hover { background: #0f1420; border-color: #0f1420; }
 .btn-ghost:hover { background: #ece8df; }
 .btn-gold { background: var(--cream); border-color: var(--cream); color: var(--oak); }
 .btn-gold:hover { background: #fff; border-color: #fff; }
-.art { padding: 0 16px 24px; max-width: 1200px; margin: 0 auto; }
+.art { padding: 0 16px 24px; max-width: 1080px; margin: 0 auto; }
+@media (min-width: 600px) { .art { padding: 0 32px 24px; } }
 .art svg { display: block; width: 100%; height: auto; }
 .art .art-phone { display: none; }
-@media (max-width: 599px) { .art .art-wide { display: none; } .art .art-phone { display: block; } }
+.art .art-phone { max-width: 620px; margin: 0 auto; }
+@media (max-width: 899px) { .art .art-wide { display: none; } .art .art-phone { display: block; } }
 .band-gold { background: var(--gold); }
-.items > div { border-top: 2px solid; padding-top: 14px; }
-.items > div:nth-child(1) { border-color: #c2643b; } .items > div:nth-child(2) { border-color: #3d5a98; } .items > div:nth-child(3) { border-color: #6b8f71; } .items > div:nth-child(4) { border-color: #d4a234; }
+.items > div { border-top: 2px solid var(--oak); padding-top: 14px; }
 .brief, .card { border-color: var(--card-rule); box-shadow: 0 1px 3px rgba(29,36,51,.06); }
 .brief dt { font-weight: 600; }
-.brief .row:nth-child(1) dt { color: #c2643b; } .brief .row:nth-child(2) dt { color: #3d5a98; } .brief .row:nth-child(3) dt { color: #557a5b; } .brief .row:nth-child(4) dt { color: #a67a14; }
+.brief .row:nth-child(1) dt { color: var(--clay-text); } .brief .row:nth-child(2) dt { color: #3d5a98; } .brief .row:nth-child(3) dt { color: #557a5b; } .brief .row:nth-child(4) dt { color: #7a5c17; }
 .asks li { background: #fff; }
 .band-oak { background: var(--oak); }
 .closing p { color: #c4c8d0; }
@@ -274,13 +285,13 @@ h1, h2, .items h3, .card h3 { font-weight: 400; }
 
 <header class="nav">
   <div class="wrap">
-    <div class="brand">
-      <span class="wordmark">wyrd</span>
-      <span class="def"><span class="def-say">/wɪərd/ <i>noun</i></span><span class="def-mean">Old English for fate, the threads of everything woven together. <span class="hold">We help you hold yours.</span></span></span>
-    </div>
-    <a class="nav-link" href="#what">What it does</a>
-    <a class="nav-link" href="#work">Work with us</a>
-    <a class="btn btn-sm" href="mailto:info@getwyrd.ai?subject=Booking%20a%20call">Book a call</a>
+    <span class="wordmark">wyrd</span>
+    <nav class="primary" aria-label="Primary">
+      <a class="nav-link" href="#what">What it does</a>
+      <a class="nav-link" href="#work">Work with us</a>
+      <a class="btn btn-sm" href="mailto:info@getwyrd.ai?subject=Booking%20a%20call">Book a call</a>
+    </nav>
+    <p class="def"><span class="def-say">/wɪərd/ <i>noun</i></span><span class="def-mean">Old English for fate, the threads of everything woven together. <span class="hold">We help you hold yours.</span></span></p>
   </div>
 </header>
 
@@ -295,10 +306,11 @@ h1, h2, .items h3, .card h3 { font-weight: 400; }
         <a class="btn" href="mailto:info@getwyrd.ai?subject=Booking%20a%20call">Book a call</a>
         <a class="btn btn-ghost" href="#what">See what it does</a>
       </p>
+      <p class="cta-note">or write to <a href="mailto:info@getwyrd.ai?subject=Booking%20a%20call">info@getwyrd.ai</a></p>
     </div>
   </section>
 
-  <div class="art"><svg class="art-wide" viewBox="0 0 1200 250" aria-hidden="true" font-family="IBM Plex Mono, monospace" font-size="13"><text x="118" y="34" text-anchor="end" fill="#7b7f86">email</text><path d="M128 30 C380 30 420 116 640 116 C770 116 820 57 1010 57 L1060 57" fill="none" stroke="#c2643b" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="65" text-anchor="end" fill="#7b7f86">texts</text><path d="M128 61 C380 61 420 119 640 119 C770 119 820 177 1010 177 L1060 177" fill="none" stroke="#6b8f71" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="96" text-anchor="end" fill="#7b7f86">calendar</text><path d="M128 92 C380 92 420 122 640 122 C770 122 820 117 1010 117 L1060 117" fill="none" stroke="#3d5a98" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="127" text-anchor="end" fill="#7b7f86">files</text><path d="M128 123 C380 123 420 125 640 125 C770 125 820 62 1010 62 L1060 62" fill="none" stroke="#c2643b" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="158" text-anchor="end" fill="#7b7f86">meeting notes</text><path d="M128 154 C380 154 420 128 640 128 C770 128 820 122 1010 122 L1060 122" fill="none" stroke="#3d5a98" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="189" text-anchor="end" fill="#7b7f86">project tools</text><path d="M128 185 C380 185 420 131 640 131 C770 131 820 127 1010 127 L1060 127" fill="none" stroke="#3d5a98" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="220" text-anchor="end" fill="#7b7f86">anything else</text><path d="M128 216 C380 216 420 134 640 134 C770 134 820 182 1010 182 L1060 182" fill="none" stroke="#6b8f71" stroke-width="1.8" stroke-linecap="round"/><circle cx="1072" cy="62" r="5" fill="#c2643b"/><text x="1086" y="67" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="18">Business</text><circle cx="1072" cy="122" r="5" fill="#3d5a98"/><text x="1086" y="127" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="18">Product</text><circle cx="1072" cy="182" r="5" fill="#6b8f71"/><text x="1086" y="187" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="18">Family</text></svg><svg class="art-phone" viewBox="0 0 600 300" aria-hidden="true" font-family="IBM Plex Mono, monospace" font-size="19"><text x="158" y="46" text-anchor="end" fill="#7b7f86">email</text><path d="M168 40 C260 40 280 141 340 141 C390 141 410 64 460 64 L474 64" fill="none" stroke="#c2643b" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="83" text-anchor="end" fill="#7b7f86">texts</text><path d="M168 77 C260 77 280 144 340 144 C390 144 410 224 460 224 L474 224" fill="none" stroke="#6b8f71" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="120" text-anchor="end" fill="#7b7f86">calendar</text><path d="M168 114 C260 114 280 147 340 147 C390 147 410 144 460 144 L474 144" fill="none" stroke="#3d5a98" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="157" text-anchor="end" fill="#7b7f86">files</text><path d="M168 151 C260 151 280 150 340 150 C390 150 410 70 460 70 L474 70" fill="none" stroke="#c2643b" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="194" text-anchor="end" fill="#7b7f86">meeting notes</text><path d="M168 188 C260 188 280 153 340 153 C390 153 410 150 460 150 L474 150" fill="none" stroke="#3d5a98" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="231" text-anchor="end" fill="#7b7f86">project tools</text><path d="M168 225 C260 225 280 156 340 156 C390 156 410 156 460 156 L474 156" fill="none" stroke="#3d5a98" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="268" text-anchor="end" fill="#7b7f86">anything else</text><path d="M168 262 C260 262 280 159 340 159 C390 159 410 230 460 230 L474 230" fill="none" stroke="#6b8f71" stroke-width="2.4" stroke-linecap="round"/><circle cx="484" cy="70" r="6" fill="#c2643b"/><text x="496" y="77" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="22">Business</text><circle cx="484" cy="150" r="6" fill="#3d5a98"/><text x="496" y="157" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="22">Product</text><circle cx="484" cy="230" r="6" fill="#6b8f71"/><text x="496" y="237" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="22">Family</text></svg></div>
+  <div class="art"><svg class="art-wide" viewBox="0 0 1200 250" aria-hidden="true" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15"><text x="118" y="34" text-anchor="end" fill="#5a6170">email</text><path d="M128 30 C380 30 420 116 640 116" fill="none" stroke="#9a9ea6" stroke-width="1.8" stroke-linecap="round"/><path d="M640 116 C770 116 820 57 1010 57 L1060 57" fill="none" stroke="#c2643b" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="65" text-anchor="end" fill="#5a6170">texts</text><path d="M128 61 C380 61 420 119 640 119" fill="none" stroke="#9a9ea6" stroke-width="1.8" stroke-linecap="round"/><path d="M640 119 C770 119 820 177 1010 177 L1060 177" fill="none" stroke="#6b8f71" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="96" text-anchor="end" fill="#5a6170">calendar</text><path d="M128 92 C380 92 420 122 640 122" fill="none" stroke="#9a9ea6" stroke-width="1.8" stroke-linecap="round"/><path d="M640 122 C770 122 820 117 1010 117 L1060 117" fill="none" stroke="#3d5a98" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="127" text-anchor="end" fill="#5a6170">files</text><path d="M128 123 C380 123 420 125 640 125" fill="none" stroke="#9a9ea6" stroke-width="1.8" stroke-linecap="round"/><path d="M640 125 C770 125 820 62 1010 62 L1060 62" fill="none" stroke="#c2643b" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="158" text-anchor="end" fill="#5a6170">meeting notes</text><path d="M128 154 C380 154 420 128 640 128" fill="none" stroke="#9a9ea6" stroke-width="1.8" stroke-linecap="round"/><path d="M640 128 C770 128 820 122 1010 122 L1060 122" fill="none" stroke="#3d5a98" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="189" text-anchor="end" fill="#5a6170">project tools</text><path d="M128 185 C380 185 420 131 640 131" fill="none" stroke="#9a9ea6" stroke-width="1.8" stroke-linecap="round"/><path d="M640 131 C770 131 820 127 1010 127 L1060 127" fill="none" stroke="#3d5a98" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="220" text-anchor="end" fill="#5a6170">anything else</text><path d="M128 216 C380 216 420 134 640 134" fill="none" stroke="#9a9ea6" stroke-width="1.8" stroke-linecap="round"/><path d="M640 134 C770 134 820 182 1010 182 L1060 182" fill="none" stroke="#6b8f71" stroke-width="1.8" stroke-linecap="round"/><circle cx="1072" cy="62" r="5" fill="#c2643b"/><text x="1086" y="67" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="18">Business</text><circle cx="1072" cy="122" r="5" fill="#3d5a98"/><text x="1086" y="127" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="18">Product</text><circle cx="1072" cy="182" r="5" fill="#6b8f71"/><text x="1086" y="187" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="18">Family</text></svg><svg class="art-phone" viewBox="0 0 600 300" aria-hidden="true" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19"><text x="158" y="46" text-anchor="end" fill="#5a6170">email</text><path d="M168 40 C260 40 280 141 340 141" fill="none" stroke="#9a9ea6" stroke-width="2.4" stroke-linecap="round"/><path d="M340 141 C390 141 410 64 460 64 L474 64" fill="none" stroke="#c2643b" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="83" text-anchor="end" fill="#5a6170">texts</text><path d="M168 77 C260 77 280 144 340 144" fill="none" stroke="#9a9ea6" stroke-width="2.4" stroke-linecap="round"/><path d="M340 144 C390 144 410 224 460 224 L474 224" fill="none" stroke="#6b8f71" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="120" text-anchor="end" fill="#5a6170">calendar</text><path d="M168 114 C260 114 280 147 340 147" fill="none" stroke="#9a9ea6" stroke-width="2.4" stroke-linecap="round"/><path d="M340 147 C390 147 410 144 460 144 L474 144" fill="none" stroke="#3d5a98" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="157" text-anchor="end" fill="#5a6170">files</text><path d="M168 151 C260 151 280 150 340 150" fill="none" stroke="#9a9ea6" stroke-width="2.4" stroke-linecap="round"/><path d="M340 150 C390 150 410 70 460 70 L474 70" fill="none" stroke="#c2643b" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="194" text-anchor="end" fill="#5a6170">meeting notes</text><path d="M168 188 C260 188 280 153 340 153" fill="none" stroke="#9a9ea6" stroke-width="2.4" stroke-linecap="round"/><path d="M340 153 C390 153 410 150 460 150 L474 150" fill="none" stroke="#3d5a98" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="231" text-anchor="end" fill="#5a6170">project tools</text><path d="M168 225 C260 225 280 156 340 156" fill="none" stroke="#9a9ea6" stroke-width="2.4" stroke-linecap="round"/><path d="M340 156 C390 156 410 156 460 156 L474 156" fill="none" stroke="#3d5a98" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="268" text-anchor="end" fill="#5a6170">anything else</text><path d="M168 262 C260 262 280 159 340 159" fill="none" stroke="#9a9ea6" stroke-width="2.4" stroke-linecap="round"/><path d="M340 159 C390 159 410 230 460 230 L474 230" fill="none" stroke="#6b8f71" stroke-width="2.4" stroke-linecap="round"/><circle cx="484" cy="70" r="6" fill="#c2643b"/><text x="496" y="77" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="22">Business</text><circle cx="484" cy="150" r="6" fill="#3d5a98"/><text x="496" y="157" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="22">Product</text><circle cx="484" cy="230" r="6" fill="#6b8f71"/><text x="496" y="237" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="22">Family</text></svg></div>
 
   <section class="band band-gold" id="what">
     <div class="wrap">
@@ -335,10 +347,10 @@ h1, h2, .items h3, .card h3 { font-weight: 400; }
       </dl>
       <p class="ask-lead">Then just ask, in plain words:</p>
       <ul class="asks">
-        <li>"Did the contractor ever reply?"</li>
-        <li>"What do I owe people this week?"</li>
-        <li>"Prep me for my 2pm."</li>
-        <li>"Those two are the same person."</li>
+        <li>“Did the contractor ever reply?”</li>
+        <li>“What do I owe people this week?”</li>
+        <li>“Prep me for my 2pm.”</li>
+        <li>“Those two are the same person.”</li>
       </ul>
     </div>
   </section>
@@ -352,6 +364,7 @@ h1, h2, .items h3, .card h3 { font-weight: 400; }
         <p class="label">For small businesses and startups</p>
       </div>
       <p class="work-note">We run our own business on wyrd every day, so we find what's broken before you do.</p>
+      <p class="cta-row work-cta"><a class="btn" href="mailto:info@getwyrd.ai?subject=Booking%20a%20call">Book a call</a></p>
     </div>
   </section>
 

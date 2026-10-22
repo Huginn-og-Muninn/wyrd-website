@@ -86,7 +86,8 @@ fi
 while IFS= read -r hit; do
   [ -n "$hit" ] || continue
   fail "external request in $PAGE, line $hit"
-done < <(grep -nE -- 'src="http|href="http' "$PAGE" | grep -vE '<meta (property|name)="(og|twitter):' | grep -vF -- "$fonts")
+done < <(grep -nE -- 'src="http|href="http' "$PAGE" | grep -vE '<meta (property|name)="(og|twitter):' | grep -vF -- "$fonts" |
+  grep -vF -- '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>')
 
 # --- Only site files are tracked ---------------------------------------------
 
