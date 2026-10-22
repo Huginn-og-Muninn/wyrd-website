@@ -75,12 +75,18 @@ while IFS= read -r hit; do
   fail "banned text in $PAGE, line $hit"
 done < <(grep -niE -- "$banned" "$PAGE")
 
-# --- No external requests, bar the link-preview meta tags --------------------
+# --- No external requests, bar the link-preview meta tags and one font sheet --
+
+fonts='<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
+count=$(grep -cF -- "$fonts" "$PAGE")
+if [ "$count" -gt 1 ]; then
+  fail "$PAGE loads $count Google Fonts stylesheets, expected at most 1"
+fi
 
 while IFS= read -r hit; do
   [ -n "$hit" ] || continue
   fail "external request in $PAGE, line $hit"
-done < <(grep -nE -- 'src="http|href="http' "$PAGE" | grep -vE '<meta (property|name)="(og|twitter):')
+done < <(grep -nE -- 'src="http|href="http' "$PAGE" | grep -vE '<meta (property|name)="(og|twitter):' | grep -vF -- "$fonts")
 
 # --- Only site files are tracked ---------------------------------------------
 

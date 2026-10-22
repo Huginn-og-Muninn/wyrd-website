@@ -11,21 +11,22 @@
 <meta property="og:description" content="wyrd reads all your inbound (email, texts, calendar, files, meeting notes), sorts it into the spheres of your life, and drafts the replies and next steps toward your goals. You review it and say yes.">
 <meta property="og:image" content="https://getwyrd.ai/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Cg%20fill='%232f3a24'%3E%3Crect%20x='14.4'%20y='13'%20width='3.2'%20height='16'%20rx='1.2'/%3E%3Cellipse%20cx='16'%20cy='12'%20rx='11'%20ry='6.6'/%3E%3Cellipse%20cx='8.6'%20cy='15.4'%20rx='6'%20ry='4.2'/%3E%3Cellipse%20cx='23.4'%20cy='15.4'%20rx='6'%20ry='4.2'/%3E%3Cellipse%20cx='12'%20cy='7.6'%20rx='5.6'%20ry='4'/%3E%3Cellipse%20cx='20.6'%20cy='8.2'%20rx='5'%20ry='3.6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%20fill='none'%20stroke-width='2.6'%20stroke-linecap='round'%3E%3Cpath%20d='M3%206%20C14%206%2014%2016%2029%2016'%20stroke='%23c2643b'/%3E%3Cpath%20d='M3%2016%20C14%2016%2018%2016%2029%2016'%20stroke='%233d5a98'/%3E%3Cpath%20d='M3%2026%20C14%2026%2014%2016%2029%2016'%20stroke='%236b8f71'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono&display=swap">
 <style>
 :root {
   color-scheme: light;
-  --cream: #f3ead6;
-  --oak: #2f3a24;
-  --oak-soft: #4a5636;
-  --gold: #e3cc93;
-  --gold-mid: #d9b86a;
-  --gold-deep: #c49a45;
-  --card: #fffaf0;
-  --rule: #d9c79a;
-  --card-rule: #ebdfc0;
-  --serif: Georgia, "Times New Roman", Times, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --cream: #f8f6f1;
+  --oak: #1d2433;
+  --oak-soft: #5a6170;
+  --gold: #efebe2;
+  --gold-mid: #c2643b;
+  --gold-deep: #c2643b;
+  --card: #ffffff;
+  --rule: #e2ddd2;
+  --card-rule: #ebe6dc;
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "Inter", -apple-system, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -140,8 +141,6 @@ h1 {
 
 .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
 
-.hills svg { display: block; width: 100%; height: auto; }
-
 /* ---- What it does ---- */
 
 .items { display: grid; gap: 26px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
@@ -241,6 +240,34 @@ h1 {
   .brief { padding: 4px 16px; }
   .brief dt { flex: 0 0 74px; }
 }
+
+/* ---- Threads look ---- */
+
+body { font-size: 16.5px; }
+.wordmark { font-size: 28px; font-weight: 500; }
+.def { font-family: var(--serif); font-size: 14px; }
+.hold { color: var(--gold-deep); font-style: italic; }
+h1 { font-weight: 400; font-size: clamp(34px, 7.4vw, 62px); letter-spacing: -.015em; }
+h1, h2, .items h3, .card h3 { font-weight: 400; }
+.eyebrow { color: var(--gold-deep); font-weight: 500; }
+.btn { border-radius: 8px; font-weight: 500; }
+.btn:hover { background: #0f1420; border-color: #0f1420; }
+.btn-ghost:hover { background: #ece8df; }
+.btn-gold { background: var(--cream); border-color: var(--cream); color: var(--oak); }
+.btn-gold:hover { background: #fff; border-color: #fff; }
+.art { padding: 0 16px 24px; max-width: 1200px; margin: 0 auto; }
+.art svg { display: block; width: 100%; height: auto; }
+.art .art-phone { display: none; }
+@media (max-width: 599px) { .art .art-wide { display: none; } .art .art-phone { display: block; } }
+.band-gold { background: var(--gold); }
+.items > div { border-top: 2px solid; padding-top: 14px; }
+.items > div:nth-child(1) { border-color: #c2643b; } .items > div:nth-child(2) { border-color: #3d5a98; } .items > div:nth-child(3) { border-color: #6b8f71; } .items > div:nth-child(4) { border-color: #d4a234; }
+.brief, .card { border-color: var(--card-rule); box-shadow: 0 1px 3px rgba(29,36,51,.06); }
+.brief dt { font-weight: 600; }
+.brief .row:nth-child(1) dt { color: #c2643b; } .brief .row:nth-child(2) dt { color: #3d5a98; } .brief .row:nth-child(3) dt { color: #557a5b; } .brief .row:nth-child(4) dt { color: #a67a14; }
+.asks li { background: #fff; }
+.band-oak { background: var(--oak); }
+.closing p { color: #c4c8d0; }
 </style>
 </head>
 <body>
@@ -271,30 +298,7 @@ h1 {
     </div>
   </section>
 
-  <div class="hills">
-    <svg viewBox="0 0 1200 200" aria-hidden="true">
-      <path d="M0 96 C120 60 262 44 380 58 C498 72 596 92 700 86 C812 79 902 46 1010 50 C1112 54 1162 66 1200 72 L1200 200 L0 200 Z" fill="#c49a45"/>
-      <g fill="#6d7450">
-        <g transform="translate(298 56) scale(.36)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-        <g transform="translate(372 56) scale(.3)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-        <g transform="translate(1004 50) scale(.34)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-        <g transform="translate(676 88) scale(.3)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-      </g>
-      <path d="M0 142 C140 112 244 126 360 120 C470 114 562 96 690 104 C820 112 902 136 1010 128 C1112 121 1164 134 1200 130 L1200 200 L0 200 Z" fill="#d9b86a"/>
-      <g fill="#4a5636">
-        <g transform="translate(186 124) scale(.5)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-        <g transform="translate(606 102) scale(.56)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-        <g transform="translate(688 106) scale(.42)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-        <g transform="translate(1064 128) scale(.48)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-      </g>
-      <path d="M0 178 C160 160 302 173 430 168 C580 162 702 150 840 158 C980 167 1102 176 1200 170 L1200 200 L0 200 Z" fill="#e3cc93"/>
-      <g fill="#2f3a24">
-        <g transform="translate(104 174) scale(.76)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-        <g transform="translate(792 158) scale(.66)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-        <g transform="translate(1152 174) scale(.7)"><rect x="-3.4" y="-21" width="6.8" height="23" rx="1.6"/><ellipse cx="0" cy="-31" rx="27" ry="14"/><ellipse cx="-20" cy="-22" rx="16" ry="9.5"/><ellipse cx="20" cy="-22" rx="16" ry="9.5"/><ellipse cx="-7" cy="-41" rx="15" ry="9.5"/><ellipse cx="11" cy="-39" rx="13" ry="8.5"/></g>
-      </g>
-    </svg>
-  </div>
+  <div class="art"><svg class="art-wide" viewBox="0 0 1200 250" aria-hidden="true" font-family="IBM Plex Mono, monospace" font-size="13"><text x="118" y="34" text-anchor="end" fill="#7b7f86">email</text><path d="M128 30 C380 30 420 116 640 116 C770 116 820 57 1010 57 L1060 57" fill="none" stroke="#c2643b" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="65" text-anchor="end" fill="#7b7f86">texts</text><path d="M128 61 C380 61 420 119 640 119 C770 119 820 177 1010 177 L1060 177" fill="none" stroke="#6b8f71" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="96" text-anchor="end" fill="#7b7f86">calendar</text><path d="M128 92 C380 92 420 122 640 122 C770 122 820 117 1010 117 L1060 117" fill="none" stroke="#3d5a98" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="127" text-anchor="end" fill="#7b7f86">files</text><path d="M128 123 C380 123 420 125 640 125 C770 125 820 62 1010 62 L1060 62" fill="none" stroke="#c2643b" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="158" text-anchor="end" fill="#7b7f86">meeting notes</text><path d="M128 154 C380 154 420 128 640 128 C770 128 820 122 1010 122 L1060 122" fill="none" stroke="#3d5a98" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="189" text-anchor="end" fill="#7b7f86">project tools</text><path d="M128 185 C380 185 420 131 640 131 C770 131 820 127 1010 127 L1060 127" fill="none" stroke="#3d5a98" stroke-width="1.8" stroke-linecap="round"/><text x="118" y="220" text-anchor="end" fill="#7b7f86">anything else</text><path d="M128 216 C380 216 420 134 640 134 C770 134 820 182 1010 182 L1060 182" fill="none" stroke="#6b8f71" stroke-width="1.8" stroke-linecap="round"/><circle cx="1072" cy="62" r="5" fill="#c2643b"/><text x="1086" y="67" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="18">Business</text><circle cx="1072" cy="122" r="5" fill="#3d5a98"/><text x="1086" y="127" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="18">Product</text><circle cx="1072" cy="182" r="5" fill="#6b8f71"/><text x="1086" y="187" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="18">Family</text></svg><svg class="art-phone" viewBox="0 0 600 300" aria-hidden="true" font-family="IBM Plex Mono, monospace" font-size="19"><text x="158" y="46" text-anchor="end" fill="#7b7f86">email</text><path d="M168 40 C260 40 280 141 340 141 C390 141 410 64 460 64 L474 64" fill="none" stroke="#c2643b" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="83" text-anchor="end" fill="#7b7f86">texts</text><path d="M168 77 C260 77 280 144 340 144 C390 144 410 224 460 224 L474 224" fill="none" stroke="#6b8f71" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="120" text-anchor="end" fill="#7b7f86">calendar</text><path d="M168 114 C260 114 280 147 340 147 C390 147 410 144 460 144 L474 144" fill="none" stroke="#3d5a98" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="157" text-anchor="end" fill="#7b7f86">files</text><path d="M168 151 C260 151 280 150 340 150 C390 150 410 70 460 70 L474 70" fill="none" stroke="#c2643b" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="194" text-anchor="end" fill="#7b7f86">meeting notes</text><path d="M168 188 C260 188 280 153 340 153 C390 153 410 150 460 150 L474 150" fill="none" stroke="#3d5a98" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="231" text-anchor="end" fill="#7b7f86">project tools</text><path d="M168 225 C260 225 280 156 340 156 C390 156 410 156 460 156 L474 156" fill="none" stroke="#3d5a98" stroke-width="2.4" stroke-linecap="round"/><text x="158" y="268" text-anchor="end" fill="#7b7f86">anything else</text><path d="M168 262 C260 262 280 159 340 159 C390 159 410 230 460 230 L474 230" fill="none" stroke="#6b8f71" stroke-width="2.4" stroke-linecap="round"/><circle cx="484" cy="70" r="6" fill="#c2643b"/><text x="496" y="77" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="22">Business</text><circle cx="484" cy="150" r="6" fill="#3d5a98"/><text x="496" y="157" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="22">Product</text><circle cx="484" cy="230" r="6" fill="#6b8f71"/><text x="496" y="237" fill="#1d2433" font-family="Newsreader, Georgia, serif" font-size="22">Family</text></svg></div>
 
   <section class="band band-gold" id="what">
     <div class="wrap">
