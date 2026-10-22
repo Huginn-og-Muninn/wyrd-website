@@ -109,18 +109,15 @@ h2 { font: 400 clamp(26px, 4.2vw, 33px)/1.18 var(--serif); margin: 0 0 24px; }
 
 .entry {
   max-width: 54ch;
-  margin: 0 0 26px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--rule);
+  margin: 30px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
   font-family: var(--serif);
-  font-size: 16px;
+  font-size: 15px;
+  color: var(--oak-soft);
 }
 
-.entry b { font-size: 21px; }
-
-.entry .say, .entry i { color: var(--oak-soft); }
-
-.entry .gloss { display: block; margin-top: 8px; font-size: 15.5px; color: var(--oak-soft); }
+.entry b, .entry .hold { color: var(--oak); }
 
 .eyebrow {
   margin: 0 0 12px;
@@ -258,7 +255,6 @@ h1 {
 
   <section class="hero">
     <div class="wrap">
-      <p class="entry"><b>wyrd</b> <span class="say">/wɪərd/ said like “weird”</span> <i>noun</i><span class="gloss">Old English for fate: the threads of everything that happens, woven together. The old Norse believed the Norns spun it at the roots of the world tree.</span></p>
       <p class="eyebrow">An AI assistant for people who run things</p>
       <h1>Everything coming in, read. The work, already drafted.</h1>
       <p class="lede">wyrd reads all your inbound (email, texts, calendar, files, meeting notes), sorts it into the spheres of your life, and drafts the replies and next steps toward your goals. You review it and say yes.</p>
@@ -266,6 +262,7 @@ h1 {
         <a class="btn" href="mailto:info@getwyrd.ai?subject=Booking%20a%20call">Book a call</a>
         <a class="btn btn-ghost" href="#what">See what it does</a>
       </p>
+      <p class="entry"><b>wyrd</b> <i>(n.)</i> /wɪərd/ — Old English for fate, the threads of everything woven together. <span class="hold">We help you hold yours.</span></p>
     </div>
   </section>
 

@@ -27,7 +27,7 @@ fi
 
 required=(
   'Everything coming in, read. The work, already drafted.'
-  'said like “weird”'
+  'We help you hold yours.'
   'Reads all your inbound'
   'Sorts life into spheres'
   'Drafts the work'
