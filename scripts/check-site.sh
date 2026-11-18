@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Guards index.html for the public getwyrd.ai site: the approved copy is intact,
-# the booking links work, nothing external is requested, and nothing but site
-# files is tracked.
+# the booking links work, nothing unexpected is requested from other hosts, and
+# nothing but site files is tracked.
 #
 # Usage: bash scripts/check-site.sh
 # Prints PASS, or one "FAIL: <reason>" line per failure and exits 1.
@@ -26,17 +26,16 @@ fi
 # --- The approved copy and the markup the page is required to carry ----------
 
 required=(
-  'Everything coming in, read. The work, already drafted.'
-  'We help you hold yours.'
-  'Reads all your inbound'
-  'Sorts life into spheres'
-  'Drafts the work'
-  'Waits for your yes'
-  'Your morning, in one look'
-  'wyrd, set up and looked after'
-  'id="what"'
-  'color-scheme: light'
-  'https://getwyrd.ai/og-image.png'
+  'We help owner-run businesses use AI to do what they already do, better.'
+  'Bespoke AI work for businesses run by their owners.'
+  'Connect what you have'
+  'Automate the busywork'
+  'Ask your business anything'
+  'Two people. You talk to the ones doing the work.'
+  'You own everything we make'
+  'Sebastopol, California'
+  'id="work"'
+  'https://getwyrd.ai/og-image.jpg'
   'aria-hidden="true"'
 )
 
@@ -52,30 +51,32 @@ fi
 
 # --- Booking links and the visible address -----------------------------------
 
-booking='mailto:info@getwyrd.ai?subject=Booking%20a%20call'
+booking='mailto:info@getwyrd.ai?subject=Book%20a%20call'
 count=$(grep -oF -- "$booking" "$PAGE" | wc -l | tr -d '[:space:]')
-if [ "$count" -lt 3 ]; then
-  fail "the booking link appears $count time(s) in $PAGE, expected at least 3"
+if [ "$count" -lt 2 ]; then
+  fail "the booking link appears $count time(s) in $PAGE, expected at least 2"
 fi
 
 count=$(grep -oF -- '>info@getwyrd.ai<' "$PAGE" | wc -l | tr -d '[:space:]')
-if [ "$count" -lt 2 ]; then
-  fail "info@getwyrd.ai is visible text $count time(s) in $PAGE, expected at least 2"
+if [ "$count" -lt 1 ]; then
+  fail "info@getwyrd.ai is visible text $count time(s) in $PAGE, expected at least 1"
 fi
 
-# --- Claims, names and scripts the page must never carry ---------------------
+# --- Claims, names and terms the page must never carry -----------------------
 
 # This repo is public, so the one internal handle in the banned list is held as
 # hex bytes rather than spelled out here. It still has to be caught in the page.
+# The offer is bespoke work: no plugin-era wording, no prices, no promised call
+# length, no jargon an owner would not know.
 handle=$(printf '\x62\x6f\x6c\x69\x6a\x61\x68')
-banned="<script|cowork|always[- ]on|in the background|testimonial|impossible|rhapsody|${handle}|superpowers|hero\.jpg"
+banned="cowork|always[- ]on|in the background|testimonial|impossible|rhapsody|${handle}|superpowers|hero\.jpg|one inbox|you approve|[0-9]+[- ]minute|twenty minutes|\bMCP\b|\\\$[0-9]"
 
 while IFS= read -r hit; do
   [ -n "$hit" ] || continue
   fail "banned text in $PAGE, line $hit"
-done < <(grep -niE -- "$banned" "$PAGE")
+done < <(grep -niE -- "$banned" "$PAGE" | cut -c1-120)
 
-# --- No external requests, bar the link-preview meta tags and one font sheet --
+# --- Requests to other hosts: one font sheet and the one 3D library ----------
 
 fonts='<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
 count=$(grep -cF -- "$fonts" "$PAGE")
@@ -83,11 +84,19 @@ if [ "$count" -gt 1 ]; then
   fail "$PAGE loads $count Google Fonts stylesheets, expected at most 1"
 fi
 
+three='<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>'
+count=$(grep -oE -- '<script[^>]* src="http' "$PAGE" | wc -l | tr -d '[:space:]')
+if [ "$count" -gt 1 ]; then
+  fail "$PAGE loads $count scripts from other hosts, expected only the 3D library"
+fi
+
+# Ordinary links out (profiles) are allowed; anything that loads is not.
 while IFS= read -r hit; do
   [ -n "$hit" ] || continue
   fail "external request in $PAGE, line $hit"
-done < <(grep -nE -- 'src="http|href="http' "$PAGE" | grep -vE '<meta (property|name)="(og|twitter):' | grep -vF -- "$fonts" |
-  grep -vF -- '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>')
+done < <(grep -nE -- 'src="http|<link[^>]* href="http' "$PAGE" | grep -vE '<meta (property|name)="(og|twitter):' | grep -vF -- "$fonts" |
+  grep -vF -- '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' | grep -vF -- "$three" |
+  grep -vF -- '<link rel="canonical" href="https://getwyrd.ai/">' | cut -c1-120)
 
 # --- Only site files are tracked ---------------------------------------------
 
@@ -95,8 +104,10 @@ allowed='.gitignore
 .rhapsody/PROMPT.md
 CNAME
 README.md
+bo.jpg
+elijah.jpg
 index.html
-og-image.png
+og-image.jpg
 scripts/check-site.sh'
 
 if ! git ls-files > /dev/null 2>&1; then
