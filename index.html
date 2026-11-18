@@ -66,7 +66,7 @@ a:focus-visible, button:focus-visible { outline: 1px solid var(--warm); outline-
 .mk::before { content: ""; position: absolute; left: 50%; bottom: calc(50% + 6px); width: 1px; height: calc(var(--d, 40px) - 15px); background: linear-gradient(to top, rgba(243,238,234,.6), rgba(243,238,234,.14)); }
 .mk span { position: absolute; left: 50%; bottom: calc(50% + var(--d, 40px)); translate: -50% 0; white-space: nowrap; font: 500 clamp(9.5px, 1.4vh, 12px)/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--fg); opacity: .92; text-shadow: 0 0 8px #000, 0 0 3px #000, 0 0 1px #000; transition: opacity .3s; }
 .mk:hover span, .mk:focus-visible span, .mk.on span { opacity: 1; }
-@media (max-width: 759px) { .links, .mk, .nav .btn { display: none; } .head { top: 10%; } .fade { height: 40%; background: linear-gradient(transparent, rgba(13,10,20,.8) 45%, var(--panel)); } .note { left: max(16px, env(safe-area-inset-left, 0px)); bottom: 108px; text-align: left; } }
+@media (max-width: 759px) { .links, .nav .btn { display: none; } .head h1 { font-size: min(30px, 7.6vw); } .head p span { display: inline; } .mk span { font-size: min(9px, 2.4vw); letter-spacing: .16em; } .mk:nth-child(even) span { margin-bottom: 15px; } .mk:nth-child(even)::before { height: var(--d, 40px); } .head { top: 10%; } .fade { height: 40%; background: linear-gradient(transparent, rgba(13,10,20,.8) 45%, var(--panel)); } .note { left: max(16px, env(safe-area-inset-left, 0px)); bottom: 108px; text-align: left; } }
 
 /* ── page ── */
 .pg { --edge: 64px; position: relative; z-index: 1; display: grid; grid-template-columns: 44px minmax(0, 1fr); background: linear-gradient(rgba(13,10,20,0), rgba(13,10,20,.4) calc(var(--edge) * .35), rgba(13,10,20,.85) calc(var(--edge) * .72), var(--panel) var(--edge)); }
@@ -186,7 +186,7 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
   say(-1);
 
   /* ── the scene: woven cloth rolling to a flat dusk horizon, six lit threads running through it ── */
-  const F = 1.7, XS = [-14, -8, -3, 2, 7, 13], BZ = -7, ROW = 1.4, SLOW = 0.45, FLOW = 0.1;
+  const F = 1.7, XS = hero.clientWidth / hero.clientHeight < 0.62 ? [-9, -6, -2, 1, 5, 8] : [-14, -8, -3, 2, 7, 13], BZ = -7, ROW = 1.4, SLOW = 0.45, FLOW = 0.1; // on a phone the six threads run closer together, so all six and their labels fit
   const HGT = (x, z, t) => 0.5 * Math.sin(x * 0.18 + t * 0.35) + 0.35 * Math.sin(z * 0.23 - t * 0.3 + x * 0.05) + 0.2 * Math.sin((x + z) * 0.4 + t * 0.5);
   let R, scn, cam, sky, mat, beads, W = 0, H = 0, dpr = 1, mx = 0, my = 0, tmx = 0, tmy = 0, seen = true, start = null, ok = false, un = 0, sp = 0, cap = coarse ? 1.5 : 2, ft = 0, fn = 0, last = 0;
   const bead = (i, t) => { const x = (XS[i] + 0.5) / F; return new T3.Vector3(x, HGT(x, BZ, t) + 0.12, BZ); };
