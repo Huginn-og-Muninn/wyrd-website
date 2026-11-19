@@ -135,15 +135,19 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
 @media (max-height: 780px) { .head .xt { display: none; } } /* on a short window the line under the headline drops its list, so it stays clear of the horizon */
 .lab.sub + .note2 { margin-top: 14px; }
 .pg .note2 { margin-top: 26px; font: italic 400 19px/1.4 var(--serif); letter-spacing: 0; color: var(--fg); max-width: 800px; }
-/* the stack: everyday automation as the top layers, the system underneath; warm to cool like the hero's sky and cloth */
-.stack { max-width: 800px; margin-top: 46px; }
-.pg .band { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin: 0 0 14px; }
+/* the stack: one thread with a bead per layer, like the steps below and the lit threads above; warm to cool like the hero's sky and cloth. Everyday work on top, the system underneath a horizon line */
+.stack { position: relative; max-width: 800px; margin-top: 48px; padding-left: 30px; box-sizing: border-box; }
+.stack::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(rgba(255,224,138,0), rgb(255,224,138) 5%, rgb(255,146,110) 24%, rgb(228,128,220) 42%, rgb(169,139,255) 60%, rgb(111,183,255) 78%, rgb(79,224,200) 93%, rgba(79,224,200,0)); opacity: .9; }
+.pg .band { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin: 0 0 26px; padding-top: 4px; }
 .band span { font: italic 400 18px/1.2 var(--serif); letter-spacing: 0; text-transform: none; color: var(--dim); }
-.layers { list-style: none; margin: 0 0 38px; padding: 0; display: grid; gap: 3px; } .layers:last-child { margin-bottom: 0; }
-.layers li { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 6px 36px; padding: 15px 22px 16px 22px; border-left: 2px solid rgba(var(--c), .9); border-radius: 0 3px 3px 0; background: linear-gradient(90deg, rgba(var(--c), .12), rgba(var(--c), .03) 62%); }
-.layers h3 { font: 400 20px/1.25 var(--serif); margin: 0; text-wrap: balance; } .layers p { font-size: 15px; line-height: 1.6; }
-.layers q { font: italic 400 16.5px/1.4 var(--serif); color: var(--fg); quotes: "\201C" "\201D"; letter-spacing: 0; }
-@media (max-width: 759px) { .layers li { grid-template-columns: minmax(0, 1fr); padding: 14px 16px 15px; } }
+.pg .band.under { max-width: none; margin-left: -30px; padding: 34px 0 0 30px; background: linear-gradient(90deg, rgba(255,217,176,.6), rgba(255,217,176,.16) 45%, rgba(255,217,176,0) 92%) 0 0 / 100% 1px no-repeat; }
+.layers { list-style: none; margin: 0 0 40px; padding: 0; } .layers:last-child { margin-bottom: 0; padding-bottom: 30px; }
+.layers li { position: relative; display: grid; grid-template-columns: 264px minmax(0, 1fr); column-gap: 28px; padding-bottom: 24px; } .layers li:last-child { padding-bottom: 0; }
+.layers li::before { content: ""; position: absolute; left: -33px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: rgb(var(--c)); box-shadow: 0 0 10px 2px rgba(var(--c), .45); }
+.layers h3 { font: 400 21px/1.2 var(--serif); margin: 0; text-wrap: balance; } .layers p { margin-top: -2px; }
+.layers q { font: italic 400 17px/1.4 var(--serif); color: var(--fg); quotes: "\201C" "\201D"; letter-spacing: 0; }
+.stack + p { margin-top: 34px; }
+@media (max-width: 759px) { .stack { padding-left: 24px; } .pg .band.under { margin-left: -24px; padding-left: 24px; } .layers li { grid-template-columns: minmax(0, 1fr); padding-bottom: 20px; } .layers li::before { left: -27px; } .layers p { margin-top: 5px; } }
 </style>
 </head>
 <body>
@@ -172,9 +176,9 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
       <p>We're a full-stack AI and data science consultancy, so we can reach for whatever your problem actually needs. We run our own business on the tools we build, automating our own mundane email work, so we know what living with automation is like. We also go much deeper: forecasting the numbers you plan around, allocating your resources with linear optimization, and building agentic systems that reason through problems on their own. Between us, in past roles, we've shipped production code on enterprise systems and provisioned the cloud infrastructure it runs on. Bring us in, and we'll find the right solution for your business.</p>
       <div class="two">
         <div><h3>Everyday automation</h3><p>Connect your tools, automate the busywork and get plain answers from your own data, often within days. We can set it up on your own computer and teach you along the way, so you can automate your next workflows yourself.</p></div>
-        <div><h3>Full production systems</h3><p>Infrastructure, data pipelines, forecasting, optimization and custom models, built, deployed and kept running.</p></div>
-        <div><h3>Domain knowledge</h3><p>Green tech, enterprise data and the AI models themselves, from direct experience. Between us, we've co-built the software that ran large grid batteries in Texas, shipped production systems on enterprise data, studied how AI language models work on the inside, and trained and fine-tuned our own. So we know the data, the models and what's at stake.</p></div>
-        <div><h3>Cut through the AI hype</h3><p>New AI products launch every week, and many of them just churn out slop. We test them ourselves, so you only get the ones that really fit your business, and we'll say so when a spreadsheet would do.</p></div>
+        <div><h3>Full production systems</h3><p>Infrastructure, data pipelines, forecasting, optimization and custom models. We take a system from the first idea all the way to running in production, then stay on to keep it running.</p></div>
+        <div><h3>Domain knowledge</h3><p>The AI models themselves, enterprise data and green tech, from direct experience. Between us, we've studied how AI language models work on the inside, trained and fine-tuned our own, shipped production systems on enterprise data, and co-built the software that ran large grid batteries in Texas. So we know the data, the models and what's at stake.</p></div>
+        <div><h3>Cut through the AI hype</h3><p>New AI products launch every week, and many of them just churn out slop. We know how the models behind them work and we test them ourselves, so you only get the ones that really fit your business. And we'll say so when a spreadsheet would do.</p></div>
         <div><h3>AI education</h3><p>We teach your whole team, from engineers to people who have never written a line of code. Developers learn to build with AI agents, the way we work ourselves. Everyone else learns to hand the slow parts of their day to AI, so work that took days takes hours.</p></div>
       </div>
     </section>
@@ -182,7 +186,7 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
     <section class="blk" id="systems">
       <p class="lab">What we build</p>
       <h2>Everyday automation on top. A full system underneath.</h2>
-      <p>What your team touches every day is the top of the build: questions answered, repeat work done, reports written. Underneath is the system that makes it possible. Some builds stop at the top few layers. The larger ones go all the way down, and we build every layer ourselves.</p>
+      <p>What your team touches every day is the top of a build: questions answered, repeat work done, reports written. On the tools you already have, that can be the whole job. When you need more, such as data you can trust, a forecast to plan around or a model trained for your work, the build goes deeper. We build every layer ourselves.</p>
       <div class="stack">
       <p class="lab band">On top <span>what your team uses every day</span></p>
       <ol class="layers" role="list">
@@ -191,18 +195,18 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
         <li style="--c:255,146,110"><h3>Reports that write themselves</h3><p>Sales, bookings and cash each week, put together from your own systems.</p></li>
         <li style="--c:255,111,145"><h3>Screens your team will use</h3><p>Dashboards and tools built around how your team works, from the database to the screen.</p></li>
       </ol>
-      <p class="lab band">Underneath <span>the system that runs it</span></p>
+      <p class="lab band under">Underneath <span>the system that runs it</span></p>
       <ol class="layers" role="list">
         <li style="--c:228,128,220"><h3>Agents on the live system</h3><p>Jobs and agents that watch your running systems and act on them: alerts, reports and controls, with a person signing off where it matters.</p></li>
-        <li style="--c:196,134,238"><h3>Models, chosen and trained</h3><p>We benchmark models against each other on your own task, fine-tune one when off-the-shelf AI isn't enough, and test it before it goes live.</p></li>
+        <li style="--c:196,134,238"><h3>Models, chosen and trained</h3><p>We benchmark models against each other on your own task, so you get the one that fits. When off-the-shelf AI isn't enough, we fine-tune one on your data and test it before it goes live.</p></li>
         <li style="--c:169,139,255"><h3>Optimization</h3><p>Scheduling, dispatch, routing and pricing, solved as optimization problems inside your software. And when your code is too slow, we make it fast.</p></li>
         <li style="--c:140,161,255"><h3>Forecasting</h3><p>Demand, load, prices, staffing and cash, forecast from your own numbers so you can plan ahead.</p></li>
         <li style="--c:111,183,255"><h3>Your data in one place</h3><p>Frontier weather data, sensors, market feeds, APIs and your own paperwork, collected reliably into one place you can trust.</p></li>
-        <li style="--c:95,204,228"><h3>Deployment</h3><p>Databases, data pipelines, monitoring, backups and security, set up, documented and handed over.</p></li>
+        <li style="--c:95,204,228"><h3>Deployment</h3><p>Databases, data pipelines, monitoring, backups and security, set up and documented.</p></li>
         <li style="--c:79,224,200"><h3>Infrastructure</h3><p>Cloud, on-site or at the edge. We pick what fits your load and your budget, so you buy only what you need.</p></li>
       </ol>
       </div>
-      <p style="margin-top:28px">We build for energy and green tech, operations, logistics, agriculture and manufacturing.</p>
+      <p>We build for operations, logistics, agriculture, manufacturing, and energy and green tech.</p>
       <p class="next"><a class="btn" href="mailto:info@getwyrd.ai?subject=Book%20a%20call&amp;body=Our%20business%20and%20my%20role%3A%20%0D%0A%0D%0AWhat%20we%27d%20like%20help%20with%3A%20%0D%0A%0D%0ATools%2C%20data%20or%20systems%20involved%3A%20">Book a call</a><a href="#pricing" data-go="pricing">What it costs</a></p>
     </section>
 
@@ -211,7 +215,7 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
       <h2>Two people. You talk to the ones doing the work.</h2>
       <div class="two">
         <div><img class="ph" src="bo.jpg" alt="" width="800" height="1000" loading="lazy"><h3>Bo Olsen</h3><p>Physicist turned AI researcher. A high-energy physicist trained at the Niels Bohr Institute at the University of Copenhagen, he held appointments at CERN and Lawrence Berkeley National Lab studying the quark–gluon plasma, the matter that filled the universe moments after the Big Bang. He then co-built the software that ran three of the top-performing large grid batteries in Texas. Now he trains software developers and data scientists to build with AI agents, or as he puts it, to level up.</p></div>
-        <div><img class="ph" src="elijah.jpg" alt="" width="800" height="1000" loading="lazy"><h3>Elijah Molenkamp</h3><p>Cognitive scientist, specialising in how AI models work. At the University of Amsterdam he studied what happens inside AI language models, by comparing them with recordings of the human brain. He trains, fine-tunes and benchmarks models himself, so he knows which model fits a job, where it will go wrong, and how to explain both in plain English.<br><a href="https://www.linkedin.com/in/elijahmolenkamp" target="_blank" rel="noopener" aria-label="Elijah Molenkamp on LinkedIn">LinkedIn</a></p></div>
+        <div><img class="ph" src="elijah.jpg" alt="" width="800" height="1000" loading="lazy"><h3>Elijah Molenkamp</h3><p>Cognitive scientist, specializing in how AI models work. At the University of Amsterdam he studied what happens inside AI language models by comparing them with recordings of the human brain. He trains and fine-tunes models himself and has benchmarked many against each other, so he knows which model fits a job, where it will go wrong, and how to explain both in plain English.<br><a href="https://www.linkedin.com/in/elijahmolenkamp" target="_blank" rel="noopener" aria-label="Elijah Molenkamp on LinkedIn">LinkedIn</a></p></div>
       </div>
     </section>
 
@@ -221,9 +225,9 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
       <ol class="steps" role="list">
         <li><b>Start</b><strong>A first series of calls</strong><p>We learn how your operation runs and where it loses time or money, and tell you honestly whether we can help.</p></li>
         <li><b>Then</b><strong>A scoped proposal</strong><p>What we'd build, in what order and what each stage costs.</p></li>
-        <li><b>Build</b><strong>Built in stages</strong><p>Each stage is scoped and priced on its own, and leaves you with something running. A first build often takes days to a few weeks and a full system several months, depending on how quickly we get access to your tools.</p></li>
+        <li><b>Build</b><strong>One stage at a time</strong><p>Each stage is scoped and priced on its own, and leaves you with something running. A first build often takes days to a few weeks and a full system several months, depending on how quickly we get access to your tools.</p></li>
         <li><b>Handover</b><strong>You own everything we make</strong><p>Working software, not slides: set up, documented and handed over, and yours to keep.</p></li>
-        <li><b>After</b><strong>We stay on</strong><p>A monthly retainer keeps it running, fixes what breaks and builds the next stage, with the same two people who built it. You own everything, so staying on is your choice.</p></li>
+        <li><b>After</b><strong>We stay on</strong><p>A monthly retainer keeps it running, fixes what breaks and builds the next stage, with the same two people who built it. Staying on is your choice.</p></li>
       </ol>
     </section>
 
@@ -232,11 +236,11 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
       <h2>What it costs.</h2>
       <p>Every project is quoted after a first series of calls, but you should know the range before you get in touch. These are examples, not quotes. The usual shape is a build, then a retainer.</p>
       <ul class="ladder" role="list">
-        <li><h3>A first series of calls</h3><p class="price">Free</p><p class="time">A few calls</p><p>Over a few calls, we learn how your business runs and tell you honestly whether we can help.</p></li>
+        <li><h3>A first series of calls</h3><p class="price">Free</p><p class="time">A few calls</p><p>You find out whether we can help and, if we can, you get a scoped proposal with a price for each stage.</p></li>
         <li><h3>An everyday automation</h3><p class="price">$1,000–$5,000+</p><p class="time">Usually days to a few weeks</p><p>A series of workflows on the tools you already use.</p></li>
         <li><h3>A connected setup</h3><p class="price">$10,000–$25,000+</p><p class="time">Usually several weeks</p><p>Several tools joined up into one database of your own, with an AI agent on top that answers questions about your business and writes your reports.</p></li>
         <li><h3>A full production system</h3><p class="price">$25,000–$50,000</p><p class="time">Several months, in stages</p><p>Infrastructure, data, and forecasting or optimization, built and deployed. Bigger systems are quoted on scope. A system like this usually continues on a retainer.</p></li>
-        <li><h3>An ongoing retainer</h3><p class="price">$500–$5,000+ <small>a month</small></p><p class="time">Ongoing</p><p>Priced by how fast you need us to respond and how much time you want: from a few hours of support or AI education a month, up to one of us working with you every week. We run the system, fix what breaks and build the next stage.</p></li>
+        <li><h3>An ongoing retainer</h3><p class="price">$500–$5,000+ <small>a month</small></p><p class="time">Ongoing</p><p>Priced by how fast you need us to respond and how much time you want: from a few hours of support or AI education a month, up to one of us working with you every week to run the system and build the next stage.</p></li>
       </ul>
     </section>
 
