@@ -98,17 +98,15 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
 /* a three-step range, hairline rows, numbered capabilities, run-in examples, price ladder */
 .pg { --hair: rgba(211,170,150,.17); }
 .lab.sub { margin-top: 54px; }
-.rows, .eg, .ladder { list-style: none; padding: 0; max-width: 800px; }
+.rows, .ladder { list-style: none; padding: 0; max-width: 800px; }
 .rows { margin: 22px 0 0; } .rows.caps { margin-top: 40px; counter-reset: cap; }
 .rows li { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 8px 40px; padding: 20px 0; border-top: 1px solid var(--hair); }
 .rows p, .ladder p { text-wrap: pretty; }
-.rows li:last-child, .eg li:last-child, .ladder li:last-child { border-bottom: 1px solid var(--hair); }
+.rows li:last-child, .ladder li:last-child { border-bottom: 1px solid var(--hair); }
 .rows h3, .ladder h3 { font: 400 21px/1.2 var(--serif); margin: 0; padding-top: 2px; text-wrap: balance; }
 .caps li { grid-template-columns: 34px 226px minmax(0, 1fr); column-gap: 0; padding: 15px 0; counter-increment: cap; }
 .caps li::before { content: counter(cap, decimal-leading-zero); font: 500 11px/1 var(--sans); letter-spacing: .14em; color: var(--label); padding-top: 10px; }
 .caps p { padding-left: 40px; }
-.eg { margin: 22px 0 0; } .eg li { padding: 13px 0; border-top: 1px solid var(--hair); text-wrap: pretty; }
-.eg h3 { display: inline; font: 400 20px/1.4 var(--serif); margin: 0 14px 0 0; } .eg p { display: inline; }
 .pg .next { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; margin-top: 36px; }
 .next a:not(.btn) { color: var(--label); text-decoration: underline 1px rgba(211,160,132,.4); text-underline-offset: 5px; padding: 10px 0; }
 .ladder { margin: 40px 0 0; }
@@ -122,7 +120,6 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
   .caps li { grid-template-columns: 34px minmax(0, 1fr); } .caps p { grid-column: 2; padding-left: 0; }
   .steps p, .ladder h3, .ladder .price, .ladder .time, .ladder li > p:last-child { grid-column: 1; grid-row: auto; } .steps p { margin-top: 8px; } .steps li { padding-left: 24px; }
   .ladder h3 { padding-top: 0; } .ladder .price { font-size: 28px; margin-top: 4px; } .ladder .time { margin-bottom: 6px; }
-  .eg h3 { display: block; margin: 0 0 4px; }
 }
 .end { display: flex; flex-wrap: wrap; align-items: center; gap: 22px 34px; }
 .mail { display: flex; flex-wrap: wrap; align-items: center; gap: 0 14px; margin-top: 16px; color: var(--dim); }
@@ -136,9 +133,17 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
 @media (max-width: 759px) { .head .xt { display: none; } .mk span { font-size: clamp(9px, 2.5vw, 10px); letter-spacing: .13em; } .links a { padding: 16px 0; } .who img.ph { max-width: 240px; } }
 .head .xt { font-style: normal; }
 @media (max-height: 780px) { .head .xt { display: none; } } /* on a short window the line under the headline drops its list, so it stays clear of the horizon */
-.eg q { font: italic 400 17px/1.4 var(--serif); color: var(--fg); quotes: "“" "”"; letter-spacing: 0; }
 .lab.sub + .note2 { margin-top: 14px; }
 .pg .note2 { margin-top: 26px; font: italic 400 19px/1.4 var(--serif); letter-spacing: 0; color: var(--fg); max-width: 800px; }
+/* the stack: everyday automation as the top layers, the system underneath; warm to cool like the hero's sky and cloth */
+.stack { max-width: 800px; margin-top: 46px; }
+.pg .band { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin: 0 0 14px; }
+.band span { font: italic 400 18px/1.2 var(--serif); letter-spacing: 0; text-transform: none; color: var(--dim); }
+.layers { list-style: none; margin: 0 0 38px; padding: 0; display: grid; gap: 3px; } .layers:last-child { margin-bottom: 0; }
+.layers li { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 6px 36px; padding: 15px 22px 16px 22px; border-left: 2px solid rgba(var(--c), .9); border-radius: 0 3px 3px 0; background: linear-gradient(90deg, rgba(var(--c), .12), rgba(var(--c), .03) 62%); }
+.layers h3 { font: 400 20px/1.25 var(--serif); margin: 0; text-wrap: balance; } .layers p { font-size: 15px; line-height: 1.6; }
+.layers q { font: italic 400 16.5px/1.4 var(--serif); color: var(--fg); quotes: "\201C" "\201D"; letter-spacing: 0; }
+@media (max-width: 759px) { .layers li { grid-template-columns: minmax(0, 1fr); padding: 14px 16px 15px; } }
 </style>
 </head>
 <body>
@@ -163,15 +168,42 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
   <div class="main gut">
     <section class="blk" id="work">
       <p class="lab">What we do</p>
-      <h2>Bespoke AI work for businesses run by their owners.</h2>
+      <h2>Bespoke AI work, built around how your business runs.</h2>
       <p>We're a full-stack AI and data science consultancy, so we can reach for whatever your problem actually needs. We run our own business on the tools we build, automating our own mundane email work, so we know what living with automation is like. We also go much deeper: forecasting the numbers you plan around, allocating your resources with linear optimization, and building agentic systems that reason through problems on their own. Between us, in past roles, we've shipped production code on enterprise systems and provisioned the cloud infrastructure it runs on. Bring us in, and we'll find the right solution for your business.</p>
       <div class="two">
-        <div><h3>Everyday automation</h3><p>Connect your tools, automate the busywork and get plain answers from your own data, in days, not weeks. We can set it up on your own computer and teach you along the way, so you can automate your next workflows yourself.</p></div>
+        <div><h3>Everyday automation</h3><p>Connect your tools, automate the busywork and get plain answers from your own data, often within days. We can set it up on your own computer and teach you along the way, so you can automate your next workflows yourself.</p></div>
         <div><h3>Full production systems</h3><p>Infrastructure, data pipelines, forecasting, optimization and custom models, built, deployed and kept running.</p></div>
-        <div><h3>Domain knowledge</h3><p>Green tech, enterprise data and neuroscience, from direct experience. Before wyrd, Bo built the software that runs grid batteries and shipped production systems on enterprise data, and Elijah studied how AI models compare with recordings of the human brain. So we know the data and what's at stake.</p></div>
+        <div><h3>Domain knowledge</h3><p>Green tech, enterprise data and the AI models themselves, from direct experience. Between us, we've co-built the software that ran large grid batteries in Texas, shipped production systems on enterprise data, studied how AI language models work on the inside, and trained and fine-tuned our own. So we know the data, the models and what's at stake.</p></div>
         <div><h3>Cut through the AI hype</h3><p>New AI products launch every week, and many of them just churn out slop. We test them ourselves, so you only get the ones that really fit your business, and we'll say so when a spreadsheet would do.</p></div>
         <div><h3>AI education</h3><p>We teach your whole team, from engineers to people who have never written a line of code. Developers learn to build with AI agents, the way we work ourselves. Everyone else learns to hand the slow parts of their day to AI, so work that took days takes hours.</p></div>
       </div>
+    </section>
+
+    <section class="blk" id="systems">
+      <p class="lab">What we build</p>
+      <h2>Everyday automation on top. A full system underneath.</h2>
+      <p>What your team touches every day is the top of the build: questions answered, repeat work done, reports written. Underneath is the system that makes it possible. Some builds stop at the top few layers. The larger ones go all the way down, and we build every layer ourselves.</p>
+      <div class="stack">
+      <p class="lab band">On top <span>what your team uses every day</span></p>
+      <ol class="layers" role="list">
+        <li style="--c:255,224,138"><h3>Ask your business anything</h3><p><q>Who hasn't booked since spring?</q> <q>What sold best last month?</q> Plain answers from your own data.</p></li>
+        <li style="--c:255,180,84"><h3>Repeat work, done for you</h3><p>New inquiries answered and booked in. Lapsed customers, unpaid invoices and open quotes followed up before they slip.</p></li>
+        <li style="--c:255,146,110"><h3>Reports that write themselves</h3><p>Sales, bookings and cash each week, put together from your own systems.</p></li>
+        <li style="--c:255,111,145"><h3>Screens your team will use</h3><p>Dashboards and tools built around how your team works, from the database to the screen.</p></li>
+      </ol>
+      <p class="lab band">Underneath <span>the system that runs it</span></p>
+      <ol class="layers" role="list">
+        <li style="--c:228,128,220"><h3>Agents on the live system</h3><p>Jobs and agents that watch your running systems and act on them: alerts, reports and controls, with a person signing off where it matters.</p></li>
+        <li style="--c:196,134,238"><h3>Models, chosen and trained</h3><p>We benchmark models against each other on your own task, fine-tune one when off-the-shelf AI isn't enough, and test it before it goes live.</p></li>
+        <li style="--c:169,139,255"><h3>Optimization</h3><p>Scheduling, dispatch, routing and pricing, solved as optimization problems inside your software. And when your code is too slow, we make it fast.</p></li>
+        <li style="--c:140,161,255"><h3>Forecasting</h3><p>Demand, load, prices, staffing and cash, forecast from your own numbers so you can plan ahead.</p></li>
+        <li style="--c:111,183,255"><h3>Your data in one place</h3><p>Frontier weather data, sensors, market feeds, APIs and your own paperwork, collected reliably into one place you can trust.</p></li>
+        <li style="--c:95,204,228"><h3>Deployment</h3><p>Databases, data pipelines, monitoring, backups and security, set up, documented and handed over.</p></li>
+        <li style="--c:79,224,200"><h3>Infrastructure</h3><p>Cloud, on-site or at the edge. We pick what fits your load and your budget, so you buy only what you need.</p></li>
+      </ol>
+      </div>
+      <p style="margin-top:28px">We build for energy and green tech, operations, logistics, agriculture and manufacturing.</p>
+      <p class="next"><a class="btn" href="mailto:info@getwyrd.ai?subject=Book%20a%20call&amp;body=Our%20business%20and%20my%20role%3A%20%0D%0A%0D%0AWhat%20we%27d%20like%20help%20with%3A%20%0D%0A%0D%0ATools%2C%20data%20or%20systems%20involved%3A%20">Book a call</a><a href="#pricing" data-go="pricing">What it costs</a></p>
     </section>
 
     <section class="blk who" id="who">
@@ -179,40 +211,8 @@ img.ph { display: block; width: 100%; height: auto; object-fit: cover; object-po
       <h2>Two people. You talk to the ones doing the work.</h2>
       <div class="two">
         <div><img class="ph" src="bo.jpg" alt="" width="800" height="1000" loading="lazy"><h3>Bo Olsen</h3><p>Physicist turned AI researcher. A high-energy physicist trained at the Niels Bohr Institute at the University of Copenhagen, he held appointments at CERN and Lawrence Berkeley National Lab studying the quark–gluon plasma, the matter that filled the universe moments after the Big Bang. He then co-built the software that ran three of the top-performing large grid batteries in Texas. Now he trains software developers and data scientists to build with AI agents, or as he puts it, to level up.</p></div>
-        <div><img class="ph" src="elijah.jpg" alt="" width="800" height="1000" loading="lazy"><h3>Elijah Molenkamp</h3><p>Cognitive scientist. At the University of Amsterdam he studied how AI language models work on the inside, by comparing them with recordings of the human brain. He trains and fine-tunes models himself, and knows what they are good at, where they go wrong, and how to explain both in plain English.<br><a href="https://www.linkedin.com/in/elijahmolenkamp" target="_blank" rel="noopener" aria-label="Elijah Molenkamp on LinkedIn">LinkedIn</a></p></div>
+        <div><img class="ph" src="elijah.jpg" alt="" width="800" height="1000" loading="lazy"><h3>Elijah Molenkamp</h3><p>Cognitive scientist, specialising in how AI models work. At the University of Amsterdam he studied what happens inside AI language models, by comparing them with recordings of the human brain. He trains, fine-tunes and benchmarks models himself, so he knows which model fits a job, where it will go wrong, and how to explain both in plain English.<br><a href="https://www.linkedin.com/in/elijahmolenkamp" target="_blank" rel="noopener" aria-label="Elijah Molenkamp on LinkedIn">LinkedIn</a></p></div>
       </div>
-    </section>
-
-    <section class="blk" id="systems">
-      <p class="lab">Production systems</p>
-      <h2>Full systems, from the infrastructure up.</h2>
-      <p>We take a system from the first idea all the way to running in production, then stay on to keep it running. We build for energy and green tech, operations, logistics, agriculture and manufacturing.</p>
-      <ol class="rows caps" role="list">
-        <li><h3>Source the infrastructure</h3><p>Cloud, on-site or at the edge. We pick what fits your load and your budget, so you buy only what you need.</p></li>
-        <li><h3>Deploy it properly</h3><p>Databases, data pipelines, monitoring, backups and security, set up, documented and handed over.</p></li>
-        <li><h3>Data acquisition</h3><p>Frontier weather data, sensors, market feeds and APIs, collected reliably and kept flowing into one place you can trust.</p></li>
-        <li><h3>Forecast what's coming</h3><p>Demand, load, prices, staffing and cash. Data science and machine learning on your own numbers, so you can plan ahead.</p></li>
-        <li><h3>Optimize the decisions</h3><p>Scheduling, dispatch, routing and pricing, solved as optimization problems inside your software. And when your code is too slow, we make it fast.</p></li>
-        <li><h3>Train models for your work</h3><p>When off-the-shelf AI isn't enough, we train and fine-tune models on your data, and test them before they go live.</p></li>
-        <li><h3>Automate the live system</h3><p>Jobs and agents that watch your running systems and act on them: alerts, reports and controls, with a person signing off where it matters.</p></li>
-        <li><h3>Build the screens around it</h3><p>Dashboards and tools your team will actually use, from the database to the screen.</p></li>
-      </ol>
-      <p class="next"><a class="btn" href="mailto:info@getwyrd.ai?subject=Book%20a%20call&amp;body=Our%20business%20and%20my%20role%3A%20%0D%0A%0D%0AWhat%20we%27d%20like%20help%20with%3A%20%0D%0A%0D%0ATools%2C%20data%20or%20systems%20involved%3A%20">Book a call</a><a href="#pricing" data-go="pricing">What it costs</a></p>
-    </section>
-
-    <section class="blk" id="everyday">
-      <p class="lab">Everyday automation</p>
-      <h2>Take the repeat work off your plate.</h2>
-      <p>You already have the tools: bookings, payments, email and your customer list. We make them work together and hand the repeat jobs to AI. We can set it up on your own computer and teach you along the way, so you can automate your next workflows yourself.</p>
-      <ul class="eg" role="list">
-        <li><h3>Ask your business anything</h3><p><q>Who hasn't booked since spring?</q> <q>What sold best last month?</q> Plain answers from your own data.</p></li>
-        <li><h3>Answer new inquiries</h3><p>Website, email and message inquiries answered and booked in, with no retyping.</p></li>
-        <li><h3>Follow up on time</h3><p>Lapsed customers, unpaid invoices and unanswered quotes, nudged before they slip.</p></li>
-        <li><h3>Reports that write themselves</h3><p>Sales, bookings and cash each week, put together from your own systems.</p></li>
-        <li><h3>Paperwork in, data out</h3><p>Details pulled out of PDFs, receipts and forms, and put where they belong.</p></li>
-        <li><h3>A customer list you can trust</h3><p>Duplicates merged and contact details kept current across every tool you use.</p></li>
-      </ul>
-      <p class="next"><a class="btn" href="mailto:info@getwyrd.ai?subject=Book%20a%20call&amp;body=Our%20business%20and%20my%20role%3A%20%0D%0A%0D%0AWhat%20we%27d%20like%20help%20with%3A%20%0D%0A%0D%0ATools%2C%20data%20or%20systems%20involved%3A%20">Book a call</a><a href="#pricing" data-go="pricing">What it costs</a></p>
     </section>
 
     <section class="blk" id="how">

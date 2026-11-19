@@ -27,10 +27,9 @@ fi
 
 required=(
   'We help businesses use AI to do what they already do, better.'
-  'Bespoke AI work for businesses run by their owners.'
-  'Full systems, from the infrastructure up.'
+  'Bespoke AI work, built around how your business runs.'
+  'Everyday automation on top. A full system underneath.'
   'Built in stages, then kept running.'
-  'Take the repeat work off your plate.'
   'A full production system'
   'What it costs.'
   'Ask your business anything'
