@@ -26,13 +26,12 @@ fi
 # --- The approved copy and the markup the page is required to carry ----------
 
 required=(
-  'We help owner-run businesses use AI to do what they already do, better.'
-  'Whatever the problem needs, from a weekly report to a forecasting system.'
-  'Everyday automation'
-  'Full production systems'
+  'We help businesses use AI to do what they already do, better.'
+  'The whole system, from the infrastructure up.'
+  'Built in stages, then kept running.'
+  'Where it often starts'
+  'A full production system'
   'What it costs.'
-  'Connect what you have'
-  'Automate the busywork'
   'Ask your business anything'
   'Two people. You talk to the ones doing the work.'
   'You own everything we make'
