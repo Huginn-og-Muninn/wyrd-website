@@ -26,10 +26,12 @@ fi
 # --- The approved copy and the markup the page is required to carry ----------
 
 required=(
-  'We help owner-run businesses use AI to do what they already do, better.'
-  'Bespoke AI work for businesses run by their owners.'
-  'Connect what you have'
-  'Automate the busywork'
+  'We help businesses use AI to do what they already do, better.'
+  'Bespoke AI work, built around how your business runs.'
+  'Everyday automation on top. A full system underneath.'
+  'Built in stages, then kept running.'
+  'A full production system'
+  'What it costs.'
   'Ask your business anything'
   'Two people. You talk to the ones doing the work.'
   'You own everything we make'
@@ -47,6 +49,20 @@ done
 if ! grep -qF -- 'Tell us what&#39;s eating your week.' "$PAGE" &&
   ! grep -qF -- "Tell us what's eating your week." "$PAGE"; then
   fail "missing from $PAGE: Tell us what's eating your week."
+fi
+
+# --- Every in-page link has a target; no contact detail but the shared inbox ----
+
+for id in $(grep -oE 'href="#[^"]+"' "$PAGE" | sed 's/href="#//;s/"//' | sort -u); do
+  grep -qF "id=\"$id\"" "$PAGE" || fail "link to #$id has no target"
+done
+
+if grep -oE '[[:alnum:]._%+-]+@[[:alnum:].-]+\.[a-z]{2,}' "$PAGE" | grep -vqx 'info@getwyrd.ai'; then
+  fail "an email address other than info@getwyrd.ai is in $PAGE"
+fi
+
+if grep -qE '\(?[0-9]{3}\)?[-. ][0-9]{3}[-. ][0-9]{4}' "$PAGE"; then
+  fail "a phone number is in $PAGE"
 fi
 
 # --- Booking links and the visible address -----------------------------------
