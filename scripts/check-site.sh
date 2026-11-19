@@ -66,10 +66,10 @@ fi
 
 # This repo is public, so the one internal handle in the banned list is held as
 # hex bytes rather than spelled out here. It still has to be caught in the page.
-# The offer is bespoke work: no plugin-era wording, no prices, no promised call
-# length, no jargon an owner would not know.
+# The offer is bespoke work: no plugin-era wording, no promised call length, no
+# jargon an owner would not know. Example prices are allowed (2026-11-18).
 handle=$(printf '\x62\x6f\x6c\x69\x6a\x61\x68')
-banned="cowork|always[- ]on|in the background|testimonial|impossible|rhapsody|${handle}|superpowers|hero\.jpg|one inbox|you approve|[0-9]+[- ]minute|twenty minutes|\bMCP\b|\\\$[0-9]"
+banned="cowork|always[- ]on|in the background|testimonial|impossible|rhapsody|${handle}|superpowers|hero\.jpg|one inbox|you approve|[0-9]+[- ]minute|twenty minutes|\bMCP\b"
 
 while IFS= read -r hit; do
   [ -n "$hit" ] || continue
