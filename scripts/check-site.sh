@@ -27,9 +27,10 @@ fi
 
 required=(
   'We help businesses use AI to do what they already do, better.'
-  'The whole system, from the infrastructure up.'
+  'Whatever the problem needs, from a weekly report to a forecasting system.'
+  'Full systems, from the infrastructure up.'
   'Built in stages, then kept running.'
-  'Where it often starts'
+  'Take the repeat work off your plate.'
   'A full production system'
   'What it costs.'
   'Ask your business anything'
