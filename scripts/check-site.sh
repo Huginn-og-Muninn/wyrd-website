@@ -27,7 +27,7 @@ fi
 
 required=(
   'We help businesses use AI to do what they already do, better.'
-  'Whatever the problem needs, from a weekly report to a forecasting system.'
+  'Bespoke AI work for businesses run by their owners.'
   'Full systems, from the infrastructure up.'
   'Built in stages, then kept running.'
   'Take the repeat work off your plate.'
