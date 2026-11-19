@@ -27,7 +27,10 @@ fi
 
 required=(
   'We help owner-run businesses use AI to do what they already do, better.'
-  'Bespoke AI work for businesses run by their owners.'
+  'Whatever the problem needs, from a weekly report to a forecasting system.'
+  'Everyday automation'
+  'Full production systems'
+  'What it costs.'
   'Connect what you have'
   'Automate the busywork'
   'Ask your business anything'
@@ -47,6 +50,20 @@ done
 if ! grep -qF -- 'Tell us what&#39;s eating your week.' "$PAGE" &&
   ! grep -qF -- "Tell us what's eating your week." "$PAGE"; then
   fail "missing from $PAGE: Tell us what's eating your week."
+fi
+
+# --- Every in-page link has a target; no contact detail but the shared inbox ----
+
+for id in $(grep -oE 'href="#[^"]+"' "$PAGE" | sed 's/href="#//;s/"//' | sort -u); do
+  grep -qF "id=\"$id\"" "$PAGE" || fail "link to #$id has no target"
+done
+
+if grep -oE '[[:alnum:]._%+-]+@[[:alnum:].-]+\.[a-z]{2,}' "$PAGE" | grep -vqx 'info@getwyrd.ai'; then
+  fail "an email address other than info@getwyrd.ai is in $PAGE"
+fi
+
+if grep -qE '\(?[0-9]{3}\)?[-. ][0-9]{3}[-. ][0-9]{4}' "$PAGE"; then
+  fail "a phone number is in $PAGE"
 fi
 
 # --- Booking links and the visible address -----------------------------------
