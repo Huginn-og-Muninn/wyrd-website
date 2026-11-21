@@ -124,7 +124,8 @@ bo.jpg
 elijah.jpg
 index.html
 og-image.jpg
-scripts/check-site.sh'
+scripts/check-site.sh
+team.jpg'
 
 if ! git ls-files > /dev/null 2>&1; then
   fail "git ls-files failed, so the list of tracked files could not be checked"
