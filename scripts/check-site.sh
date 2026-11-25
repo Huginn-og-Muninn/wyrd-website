@@ -28,15 +28,13 @@ done
 # --- The approved copy and the markup the page is required to carry ----------
 
 required=(
-  'We help businesses use AI to do what they already do, better.'
-  'Bespoke AI work, built around how your business runs.'
-  'Everyday automation on top. A full system underneath.'
-  'Built in stages, then kept running.'
-  'A full production system'
-  'What it costs.'
+  "It's a wyrd time to run a business."
+  'Your business, woven into one system you can trust.'
+  'From one question to a full production system.'
   'Ask your business anything'
+  'Full production systems'
   'Two people. You talk to the ones doing the work.'
-  'You own everything we make'
+  "We don't hand you a system and walk away."
   'Sebastopol, California'
   'id="work"'
   'https://getwyrd.ai/og-image.jpg'
